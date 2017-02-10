@@ -10,8 +10,12 @@
     <property name="hibernate.connection.password">J7lF5yveQh</property>
     <property name="show_sql">true</property>
     <!-- Drop and re-create the database schema on startup -->
-    <property name="hbm2ddl.auto">update</property> 
-    <!-- Mapping files -->
-    <mapping resource="forum/Abonne.hbm.xml"/>
+    <property name="hbm2ddl.auto">create</property> 
+    
+   <!-- Mapping files -->
+    <mapping resource="metier/Client.hbm.xml"/>
+    <mapping resource="metier/Categorie.hbm.xml"/>
+     <mapping resource="metier/Editeur.hbm.xml"/>
+      <mapping resource="metier/Jeu.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

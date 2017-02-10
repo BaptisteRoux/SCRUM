@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="metier.Client" table="Client">
+  <id column="id_client" type="integer" name="id_client">
+    <generator class="identity">
+			</generator>
+    </id>
+    <property name="mail"/>
+    <property name="nom"/>
+    <property name="prenom"/>
+    <property name="telephone"/>
+    <property name="date_inscription"/>
+    <property name="mdp"/>
+
+
+  </class>
+</hibernate-mapping>

@@ -7,8 +7,8 @@ import java.util.Set;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import metier.*;
 import util.HibernateUtil;
-import forum.*;
 
 public class Main {
 
@@ -18,9 +18,9 @@ public class Main {
 	        Session session = HibernateUtil.currentSession();
 		Transaction tx = session.beginTransaction();
 		
-               Abonne abo = new Particulier("bat","mdp", "Baptiste", "Roux");
+               //Client abo = new Particulier("bat","mdp", "Baptiste", "Roux");
                
-               session.save(abo);
+               //session.save(abo);
           
    
                 

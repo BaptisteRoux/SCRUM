@@ -10,10 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 
-import dao.AbonneDAO;
-import forum.Abonne;
-
-import forum.Particulier;
+import dao.ClientDAO;
+import metier.Client;
 import util.HibernateUtil;
 
 public class Index extends HttpServlet {
@@ -27,11 +25,12 @@ public class Index extends HttpServlet {
 
 	private static final String CHAMP_LOGIN = "login";
 	private static final String CHAMP_MDP = "mdp";
+	private static final String CHAMP_MAIL = "mail";
 	private static final String CHAMP_NOM = "nom";
 	private static final String CHAMP_PRENOM = "prenom";
 
 	
-	private AbonneDAO abonneDAO = new AbonneDAO ();
+	private ClientDAO abonneDAO = new ClientDAO ();
 
 	private String message ;
 
@@ -57,14 +56,14 @@ public class Index extends HttpServlet {
 	private void connexion(HttpServletRequest request) {
 
 		/* Récupération des champs du formulaire */
-		String login = getValeurChamp(request, CHAMP_LOGIN);
+		String mail = getValeurChamp(request, CHAMP_MAIL);
 		String mdp = getValeurChamp(request, CHAMP_MDP);
 
-		if (login == null || mdp == null ) {
+		if (mail == null || mdp == null ) {
 			message = "Les champs ne doivent pas être vide.";
 		} else {
 			
-			Abonne abonne = abonneDAO.rechercheParLoginAbonne(login,mdp);
+			Client abonne = abonneDAO.rechercheParMailAbonne(mail,mdp);
 				if (abonne == null ){
 					message = "Identifiants incorrects.";
 				}else{
@@ -79,20 +78,19 @@ public class Index extends HttpServlet {
 	private void inscriptionParticulier(HttpServletRequest request) {
 
 		/* Récupération des champs du formulaire */
-		String login = getValeurChamp(request, CHAMP_LOGIN);
+		String mail = getValeurChamp(request, CHAMP_MAIL);
 		String mdp = getValeurChamp(request, CHAMP_MDP);
 		String nom = getValeurChamp(request, CHAMP_NOM);
 		String prenom = getValeurChamp(request, CHAMP_PRENOM);
 
-		if (login == null || mdp == null || nom == null || prenom == null) {
+		if (mail == null || mdp == null || nom == null || prenom == null) {
 			message = "Les champs ne doivent pas être vide.";
 		} else {
 			try {
 				HibernateUtil.getSessionFactory()
                 .getCurrentSession().beginTransaction();
-				Abonne abonne = new Particulier(login, mdp, nom, prenom);
-				HibernateUtil.getSessionFactory()
-                .getCurrentSession().save(abonne);
+				//Client abonne = new Particulier(login, mdp, nom, prenom);
+				//HibernateUtil.getSessionFactory().getCurrentSession().save(abonne);
 
 				HibernateUtil.getSessionFactory()
                 .getCurrentSession().getTransaction().commit();
@@ -100,7 +98,7 @@ public class Index extends HttpServlet {
 				//Annuaire annuaire = annuaireDAO.rechercheParNomAnnuaire(ANNUAIRE_ABOS);
 				//annuaireDAO.addAbo(annuaire, abonne);
 				HttpSession session = request.getSession();
-				session.setAttribute(SESSION_ABONNE, abonne);
+				//session.setAttribute(SESSION_ABONNE, abonne);
 				
 			} catch (org.hibernate.exception.ConstraintViolationException e) {
 				HibernateUtil.getSessionFactory().getCurrentSession().getTransaction().rollback();
