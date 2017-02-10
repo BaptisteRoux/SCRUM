@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>SCRUM</display-name>
+  
+ 	<servlet>
+		<servlet-name>Index</servlet-name>
+		<servlet-class>servlet.Index</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>Deconnexion</servlet-name>
+		<servlet-class>servlet.Deconnexion</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>Index</servlet-name>
+		<url-pattern></url-pattern>
+                <url-pattern>/index</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>Deconnexion</servlet-name>
+		<url-pattern>/deco</url-pattern>
+	</servlet-mapping>
+
+	<listener>
+		<listener-class>listeners.HibernateListener</listener-class>
+	</listener>
+</web-app>
