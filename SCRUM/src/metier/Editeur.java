@@ -6,7 +6,10 @@ public class Editeur {
 	private String nom;
 	
 	public Editeur(){}
-
+public Editeur(int id_editeur, String nom){
+	this.id_editeur=id_editeur;
+	this.nom=nom;
+}
 	public int getId_editeur() {
 		return id_editeur;
 	}

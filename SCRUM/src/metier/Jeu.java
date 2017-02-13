@@ -10,7 +10,15 @@ public class Jeu {
 	private String description;
 	
 	public Jeu (){}
-
+public Jeu(int id_jeu, String video, String nom, Categorie categorie, Editeur editeur, float prix, String description){
+	this.id_jeu=id_jeu;
+	this.video=video;
+	this.nom=nom;
+	this.categorie=categorie;
+	this.editeur=editeur;
+	this.prix=prix;
+	this.description=description;
+}
 	public int getId_jeu() {
 		return id_jeu;
 	}
