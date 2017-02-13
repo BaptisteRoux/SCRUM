@@ -65,7 +65,7 @@
 
             <div class="col-md-9">
 
-                <form id="recherche" method="post" action="<c:url value="/index"/>">
+                <form id="recherche" method="get" action="<c:url value="/recherche"/>">
 
                     <div class="top-row inner-addon right-addon" >
                             <div class="field-wrap" style="margin-left:30%; margin-bottom: 20px;">
@@ -74,20 +74,20 @@
                                     <input name="recherche" type="text"  required autocomplete="on">
                                     
                             </div>
-
+					<button class="btn" type="submit">Rechercher</button>
                     </div>
                     
 
 		</form>
-
+	
                 <div class="row">
-
+					<c:forEach items="${listeResultats}" var="listeResultats">
                     <div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
                             <img src="http://placehold.it/320x150" alt="">
                             <div class="caption">
                                 <h4 class="pull-right">$24.99</h4>
-                                <h4><a href="#">Premier Jeu</a>
+                                <h4><a href="#"><c:out value="${listeResultats.getNom()} " /></a>
                                 </h4>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                             </div>
@@ -103,7 +103,7 @@
                             </div>
                         </div>
                     </div>
-
+</c:forEach>
                     <div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
                             <img src="http://placehold.it/320x150" alt="">
