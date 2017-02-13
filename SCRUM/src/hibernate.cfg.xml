@@ -15,7 +15,7 @@
    <!-- Mapping files -->
     <mapping resource="metier/Client.hbm.xml"/>
     <mapping resource="metier/Categorie.hbm.xml"/>
-     <mapping resource="metier/Editeur.hbm.xml"/>
-      <mapping resource="metier/Jeu.hbm.xml"/>
+    <mapping resource="metier/Editeur.hbm.xml"/>
+    <mapping resource="metier/Jeu.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>
