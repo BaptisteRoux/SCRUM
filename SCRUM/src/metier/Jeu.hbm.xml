@@ -9,7 +9,7 @@
     <property name="nom"/>
     <property name="video"/>
     <property name="prix"/>
-    <property name="description"/>
+    <property type="text" name="description"/>
 
 <many-to-one  name="categorie" column="id_categorie" class="metier.Categorie" /> 
 <many-to-one  name="editeur" column="id_editeur" class="metier.Editeur" />

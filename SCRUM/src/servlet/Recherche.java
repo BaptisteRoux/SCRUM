@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 
 import dao.ClientDAO;
+import dao.JeuDAO;
 import metier.Categorie;
 import metier.Client;
 import metier.Editeur;
@@ -36,6 +37,7 @@ public class Recherche extends HttpServlet {
 	private static final String CHAMP_RECHERCHE = "recherche";
 	
 	private ClientDAO abonneDAO = new ClientDAO ();
+private JeuDAO jeuDAO = new JeuDAO ();
 
 	private String message ;
 
@@ -48,11 +50,11 @@ public class Recherche extends HttpServlet {
 		Jeu j1 = new Jeu(1,"video.url", "FIFA", cat1, edit1, 20, "description");
 		Jeu j2 = new Jeu(2,"video.url", "FIFA2", cat2, edit2, 20, "description2");
 		
-		List<Jeu> recherche = new ArrayList<Jeu> ();
-		recherche.add(j1);
-		recherche.add(j2);
+		List<Jeu> recherche = 	jeuDAO.rechercherJeu( request.getParameter(CHAMP_RECHERCHE));
+		//recherche.add(j1);
+		//recherche.add(j2);
 		
-		
+	
 		/* Récupération de la session depuis la requête */
 		     //HttpSession session = request.getSession();
 		     /* Ajout de l'objet message dans la requête */

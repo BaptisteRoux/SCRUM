@@ -11,18 +11,15 @@ import org.hibernate.Session;
 import util.HibernateUtil;
 
 public class JeuDAO {
-    public Jeu rechercherJeu(String nom) {
-        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-
-        Query query = session.createQuery("from Jeu where nom like :nom");
-        query.setString("nom", "%"+nom+"%");
-        
-        List<Jeu> jeux = query.list();
-        
-        session.close();
+    @SuppressWarnings("unchecked")
+	public List<Jeu> rechercherJeu(String nom) {
+    	List<Jeu> jeux = new ArrayList<Jeu> ();
+    	HibernateUtil.getSessionFactory().getCurrentSession().beginTransaction();
+        jeux = HibernateUtil.sessionFactory.getCurrentSession().createQuery("from Jeu where nom like :nom").setString("nom", "%"+nom+"%").list();
+        HibernateUtil.getSessionFactory().getCurrentSession().getTransaction().commit();
         
         if (jeux.size() > 0) {
-            return jeux.get(0);
+            return jeux;
         } else {
             return null;
         }
