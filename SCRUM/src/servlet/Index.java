@@ -1,5 +1,6 @@
 package servlet;
 
+import dao.CategorieDAO;
 import java.io.IOException;
 import java.util.List;
 
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 
 import dao.ClientDAO;
+import dao.EditeurDAO;
 import metier.Client;
 import util.HibernateUtil;
 
@@ -31,11 +33,16 @@ public class Index extends HttpServlet {
 
 	
 	private ClientDAO abonneDAO = new ClientDAO ();
+        private CategorieDAO categorieDAO = new CategorieDAO ();
+        private EditeurDAO editeurDAO = new EditeurDAO ();
 
 	private String message ;
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		message="";
+                HttpSession session = request.getSession();
+                session.setAttribute("editeurs", editeurDAO.getEditeurs());
+                session.setAttribute("categories", categorieDAO.getCategories());
 		redirection(request, response);
 	}
 

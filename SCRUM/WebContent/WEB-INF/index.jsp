@@ -1,3 +1,6 @@
+<%@page import="metier.Editeur"%>
+<%@page import="metier.Categorie"%>
+<%@page import="java.util.List"%>
 <%@ page pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
@@ -47,18 +50,21 @@
 
             <div class="col-md-3">
                 <p class="lead">6t’aimeJouer</p>
+
                 <div class="list-group">
-                    <a href="#" class="list-group-item">RPG</a>
-                    <a href="#" class="list-group-item">Action</a>
-                    <a href="#" class="list-group-item">Aventure</a>
-                    <a href="#" class="list-group-item">FPS</a>
-                    <a href="#" class="list-group-item">Indépendant</a>
+                    <c:forEach items="${categories}" var="categories">
+                        <a href="#" class="list-group-item">
+                        <c:out value="${categories.getNom()} " />
+                        </a>
+                    </c:forEach>
                 </div>
                 
                 <div class="list-group">
-                    <a href="#" class="list-group-item">Windows</a>
-                    <a href="#" class="list-group-item">Mac</a>
-                    <a href="#" class="list-group-item">Linux</a>
+                    <c:forEach items="${editeurs}" var="editeurs">
+                        <a href="#" class="list-group-item">
+                        <c:out value="${editeurs.getNom()} " />
+                        </a>
+                    </c:forEach>
                 </div>
             </div>
             

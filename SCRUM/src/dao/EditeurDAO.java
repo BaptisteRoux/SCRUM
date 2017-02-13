@@ -9,12 +9,11 @@ import util.HibernateUtil;
 public class EditeurDAO {
     public List<Editeur> getEditeurs() {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-
+        session.beginTransaction();
+        
         Query query = session.createQuery("from Editeur");
         
         List<Editeur> editeurs = query.list();
-        
-        session.close();
         
         return editeurs;
     }

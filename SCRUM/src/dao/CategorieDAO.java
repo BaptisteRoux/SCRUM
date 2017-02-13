@@ -10,12 +10,11 @@ import util.HibernateUtil;
 public class CategorieDAO {
     public List<Categorie> getCategories() {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-
+        session.beginTransaction();
+        
         Query query = session.createQuery("from Categorie");
         
         List<Categorie> categories = query.list();
-        
-        session.close();
         
         return categories;
     }
