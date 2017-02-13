@@ -10,6 +10,10 @@
 		<servlet-name>Deconnexion</servlet-name>
 		<servlet-class>servlet.Deconnexion</servlet-class>
 	</servlet>
+        <servlet>
+		<servlet-name>Fiche</servlet-name>
+		<servlet-class>servlet.Fiche</servlet-class>
+	</servlet>
 	<servlet>
 		<servlet-name>Recherche</servlet-name>
 		<servlet-class>servlet.Recherche</servlet-class>
@@ -27,6 +31,10 @@
 <servlet-mapping>
 		<servlet-name>Recherche</servlet-name>
 		<url-pattern>/recherche</url-pattern>
+	</servlet-mapping>
+        <servlet-mapping>
+		<servlet-name>Fiche</servlet-name>
+		<url-pattern>/fiche</url-pattern>
 	</servlet-mapping>
 	<listener>
 		<listener-class>listeners.HibernateListener</listener-class>
