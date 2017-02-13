@@ -10,7 +10,10 @@
 		<servlet-name>Deconnexion</servlet-name>
 		<servlet-class>servlet.Deconnexion</servlet-class>
 	</servlet>
-	
+	<servlet>
+		<servlet-name>Recherche</servlet-name>
+		<servlet-class>servlet.Recherche</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>Index</servlet-name>
 		<url-pattern></url-pattern>
@@ -21,7 +24,10 @@
 		<servlet-name>Deconnexion</servlet-name>
 		<url-pattern>/deco</url-pattern>
 	</servlet-mapping>
-
+<servlet-mapping>
+		<servlet-name>Recherche</servlet-name>
+		<url-pattern>/recherche</url-pattern>
+	</servlet-mapping>
 	<listener>
 		<listener-class>listeners.HibernateListener</listener-class>
 	</listener>
