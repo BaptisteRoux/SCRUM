@@ -8,9 +8,28 @@ import metier.Editeur;
 import metier.Jeu;
 import org.hibernate.Query;
 import org.hibernate.Session;
+
 import util.HibernateUtil;
 
 public class JeuDAO {
+	
+	@SuppressWarnings("unchecked")
+	public Jeu rechercheParId(int id) {
+
+		List<Jeu> jeu = new ArrayList<Jeu>();
+		HibernateUtil.getSessionFactory().getCurrentSession().beginTransaction();
+
+		jeu = HibernateUtil.sessionFactory.getCurrentSession().createQuery("from Jeu where id_jeu=?")
+				.setParameter(0, id).list();
+
+		HibernateUtil.getSessionFactory().getCurrentSession().getTransaction().commit();
+		if (jeu.size() > 0) {
+			return jeu.get(0);
+		} else {
+			return null;
+		}
+
+	}
     @SuppressWarnings("unchecked")
 	public List<Jeu> rechercherJeu(String nom) {
     	List<Jeu> jeux = new ArrayList<Jeu> ();
