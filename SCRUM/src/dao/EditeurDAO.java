@@ -1,6 +1,7 @@
 package dao;
 
 import java.util.List;
+
 import metier.Editeur;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -17,4 +18,16 @@ public class EditeurDAO {
         
         return editeurs;
     }
+    public void addEditeur(Editeur editeur) {
+
+		HibernateUtil.getSessionFactory()
+        .getCurrentSession().beginTransaction();
+		
+		HibernateUtil.getSessionFactory()
+        .getCurrentSession().save(editeur);
+
+		HibernateUtil.getSessionFactory()
+        .getCurrentSession().getTransaction().commit();
+
+	}
 }

@@ -6,23 +6,13 @@
 package servlet;
 
 import java.io.IOException;
-import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
 import dao.JeuDAO;
 import metier.Jeu;
 
-import static servlet.Index.ACCES_PUBLIC;
-
-/**
- *
- * @author arthu
- */
 public class Fiche extends HttpServlet {
 	private static final long serialVersionUID = 3362945275861110624L;
 	public static final String ACCES_PUBLIC = "/WEB-INF/fiche.jsp";

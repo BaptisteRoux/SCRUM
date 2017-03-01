@@ -13,9 +13,13 @@ public class Client {
 	private Date date_inscription;
 	
 	public Client (){}
-	public Client(String mail, String mdp){
+	public Client(String nom, String prenom, int telephone, String mail, String mdp){
+		this.setNom(nom);
+		this.setPrenom(prenom);
+		this.setTelephone(telephone);
 		this.setMail(mail);
 		this.setMdp(mdp);
+		this.setDate_inscription(new Date());
 	}
 
 

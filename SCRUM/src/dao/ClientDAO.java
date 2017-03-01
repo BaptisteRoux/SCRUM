@@ -18,8 +18,10 @@ public class ClientDAO {
 		List<Client> client = new ArrayList<Client>();
 		HibernateUtil.getSessionFactory().getCurrentSession().beginTransaction();
 		
-		client = HibernateUtil.sessionFactory.getCurrentSession().createQuery("from Client where mail=? and mdp=?")
-				.setParameter(0, client).setParameter(1, mdp).list();
+		client = HibernateUtil.sessionFactory.getCurrentSession().createQuery("from Client where mail=:mail and mdp=:mdp")
+				.setString("mail", mail)
+				.setString("mdp", mdp)
+				.list();
 		
 		HibernateUtil.getSessionFactory().getCurrentSession().getTransaction().commit();
 		if (client.size() > 0) {
